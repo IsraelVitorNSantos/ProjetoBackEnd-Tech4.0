@@ -1,14 +1,18 @@
-// Importa o Express
+
 const express = require('express');
 
-// Importa o Controller
 const statusController = require('../controllers/statusController');
+const userRoutes = require('./userRoutes');
+const categoryRoutes = require('./categoryRoutes');
 
-// Cria um agrupador de rotas
 const router = express.Router();
 
-// Define a rota e direciona para o Controller
 router.get('/status', statusController.verificarStatus);
 
-// Exporta as rotas
+// Rotas de usuários
+router.use('/v1/user', userRoutes);
+
+// Rotas de categorias
+router.use('/v1/category', categoryRoutes);
+
 module.exports = router;
